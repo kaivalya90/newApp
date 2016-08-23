@@ -1,0 +1,43 @@
+<% provide(:title, @current_user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+     
+        Hello <%= @current_user.name  %>!!
+      </h1>
+	  
+	  
+    </section>
+	
+	  </aside>
+</div>  
+
+<% provide(:title, 'All users') %>
+<h2>All users</h2>
+
+<table class="users" style="border:1px solid black;color:blue;width:100%; align:center; border-collapse:collapse; table-layout:auto;">
+	
+		<th style="border:1px solid black;color:blue align:center;" >Name</th>
+		<th style="border:1px solid black;color:blue align:center;" >Username</th>
+		<th style="border:1px solid black;color:blue align:center;">Role</th>
+		<th style="border:1px solid black;color:blue align:center;"></th>
+	
+	<% @users.each do |user| %>
+    <tr>
+      <td style="border:1px solid black;color:blue; align:center"><%= user.name %></td> 
+      <td style="border:1px solid black;color:blue; align:center"><%= user.username %></td>
+	  <td style="border:1px solid black;color:blue; align:center"><%= user.role %></td>
+	  <td>
+        <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
+                    "data-sid" => @current_user.id, "data-rip" => user.id %>
+      </td>
+    </tr>
+	<% end %>
+</table>
+
+
+
+
+
+ 
